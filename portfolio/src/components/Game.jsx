@@ -15,16 +15,44 @@ const Game = () => {
       },
       scene: {
         preload: function () {
-          this.load.image("sky", "assets/backgrounds/sky.png");
-          this.load.image("ground", "assets/platforms/ground.png");
-          this.load.spritesheet("player", "assets/characters/blue-wizard.png", {
-            frameWidth: 32,
-            frameHeight: 48,
-          });
+          // Load background
+          this.load.image("sky", "/assets/backgrounds/sky.png");
+
+          // Load player animation frames
+          for (let i = 0; i <= 19; i++) {
+            const frameNumber = i.toString().padStart(5, "0");
+            this.load.image(
+              `blueWizardIdleFrame${i + 1}`,
+              `/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle${frameNumber}.png`
+            );
+          }
         },
+
         create: function () {
+          // Add background
           this.add.image(400, 300, "sky");
-          const player = this.physics.add.sprite(100, 450, "player");
+
+          // Dynamically generate idle animation
+          const idleFrames = [];
+          for (let i = 1; i <= 20; i++) {
+            idleFrames.push({ key: `blueWizardIdleFrame${i}` });
+          }
+
+          // Create the player sprite and animation
+          const player = this.physics.add.sprite(
+            100,
+            450,
+            "blueWizardIdleFrame1"
+          );
+          this.anims.create({
+            key: "idle",
+            frames: idleFrames,
+            frameRate: 10,
+            repeat: -1,
+          });
+
+          // Play the idle animation
+          player.play("idle");
           player.setCollideWorldBounds(true);
         },
       },
