@@ -15,8 +15,23 @@ const Game = () => {
       },
       scene: {
         preload: function () {
-          // Load background
-          this.load.image("sky", "/assets/backgrounds/sky.png");
+          // Load parallax background layers
+          this.load.image(
+            "background1",
+            "/assets/game-resources/parallax-backgrounds/caves/option1/background1.png"
+          );
+          this.load.image(
+            "background2",
+            "/assets/game-resources/parallax-backgrounds/caves/option1/background2.png"
+          );
+          this.load.image(
+            "background3",
+            "/assets/game-resources/parallax-backgrounds/caves/option1/background3.png"
+          );
+          this.load.image(
+            "background4a",
+            "/assets/game-resources/parallax-backgrounds/caves/option1/background4a.png"
+          );
 
           // Load player animation frames
           for (let i = 0; i <= 19; i++) {
@@ -29,8 +44,19 @@ const Game = () => {
         },
 
         create: function () {
-          // Add background
-          this.add.image(400, 300, "sky");
+          // Add parallax background layers
+          this.background1 = this.add
+            .tileSprite(400, 300, 800, 600, "background1")
+            .setScrollFactor(0);
+          this.background2 = this.add
+            .tileSprite(400, 300, 800, 600, "background2")
+            .setScrollFactor(0);
+          this.background3 = this.add
+            .tileSprite(400, 300, 800, 600, "background3")
+            .setScrollFactor(0);
+          this.background4a = this.add
+            .tileSprite(400, 300, 800, 600, "background4a")
+            .setScrollFactor(0);
 
           // Dynamically generate idle animation
           const idleFrames = [];
@@ -54,6 +80,14 @@ const Game = () => {
           // Play the idle animation
           player.play("idle");
           player.setCollideWorldBounds(true);
+        },
+
+        update: function () {
+          // Scroll the parallax background layers
+          this.background1.tilePositionX += 0.1; // Slowest
+          this.background2.tilePositionX += 0.3;
+          this.background3.tilePositionX += 0.6;
+          this.background4a.tilePositionX += 1.0; // Fastest
         },
       },
       parent: gameContainer.current, // Attach Phaser to this DOM node
