@@ -15,6 +15,12 @@ const Game = () => {
       },
       scene: {
         preload: function () {
+          //Load the tileset
+          this.load.image(
+            "tileset",
+            "/assets/game-resources/tilesets/tileset1.png"
+          );
+
           // Load parallax background layers
           this.load.image(
             "background1",
@@ -44,6 +50,16 @@ const Game = () => {
         },
 
         create: function () {
+          const platforms = this.physics.add.staticGroup();
+
+          // Add ground and platforms
+          platforms.create(400, 580, "tileset").setScale(2).refreshBody(); // Ground
+          platforms.create(200, 450, "tileset");
+          platforms.create(600, 350, "tileset");
+          platforms.create(400, 250, "tileset");
+
+          this.platforms = platforms; // Store reference for later use
+
           // Add parallax background layers
           this.background1 = this.add
             .tileSprite(400, 300, 800, 600, "background1")
@@ -58,6 +74,15 @@ const Game = () => {
             .tileSprite(400, 300, 800, 600, "background4a")
             .setScrollFactor(0);
 
+          // Custom Keys for Controls
+          this.keys = this.input.keyboard.addKeys({
+            up: Phaser.Input.Keyboard.KeyCodes.W,
+            left: Phaser.Input.Keyboard.KeyCodes.A,
+            down: Phaser.Input.Keyboard.KeyCodes.S,
+            right: Phaser.Input.Keyboard.KeyCodes.D,
+            jump: Phaser.Input.Keyboard.KeyCodes.SPACE,
+          });
+
           // Dynamically generate idle animation
           const idleFrames = [];
           for (let i = 1; i <= 20; i++) {
@@ -65,7 +90,7 @@ const Game = () => {
           }
 
           // Create the player sprite and animation
-          const player = this.physics.add.sprite(
+          this.player = this.physics.add.sprite(
             100,
             450,
             "blueWizardIdleFrame1"
@@ -78,16 +103,39 @@ const Game = () => {
           });
 
           // Play the idle animation
-          player.play("idle");
-          player.setCollideWorldBounds(true);
-        },
+          this.player.play("idle");
+          this.player.setBounce(0.2); // Slight bounce when landing
+          this.player.setCollideWorldBounds(true);
 
+          // Add Collision Between Character and Platform
+          this.physics.add.collider(this.player, this.platforms);
+        },
         update: function () {
           // Scroll the parallax background layers
           this.background1.tilePositionX += 0.1; // Slowest
           this.background2.tilePositionX += 0.3;
           this.background3.tilePositionX += 0.6;
           this.background4a.tilePositionX += 1.0; // Fastest
+
+          const speed = 160; // Movement speed
+          const jumpPower = -330; // Jump height
+
+          if (this.keys.left.isDown) {
+            this.player.setVelocityX(-speed); // Move left
+          } else if (this.keys.right.isDown) {
+            this.player.setVelocityX(speed); // Move right
+          } else {
+            this.player.setVelocityX(0); // Stop moving when no key is pressed
+          }
+
+          if (this.keys.jump.isDown && this.player.body.touching.down) {
+            this.player.setVelocityY(jumpPower); // Jump when touching the ground
+          }
+
+          //debugging to see if the correct keys are detected
+          if (this.keys.left.isDown) console.log("Moving Left");
+          if (this.keys.right.isDown) console.log("Moving Right");
+          if (this.keys.jump.isDown) console.log("Jumping");
         },
       },
       parent: gameContainer.current, // Attach Phaser to this DOM node
