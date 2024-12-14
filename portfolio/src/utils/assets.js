@@ -3,6 +3,7 @@
 export const loadAssets = (scene) => {
   // Load tileset
   // scene.load.image("tileset", "/assets/game-resources/tilesets/tileset1.png");
+  // scene.load.image("ground", "/assets/platforms/ground.png");
 
   // Load parallax background layers
   const basePath = "/assets/game-resources/parallax-backgrounds/forest/";
@@ -29,6 +30,33 @@ export const loadAssets = (scene) => {
     scene.load.image(
       `blueWizardIdleFrame${i + 1}`,
       `/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle${frameNumber}.png`
+    );
+  }
+
+  // Load walk frames
+  for (let i = 0; i <= 19; i++) {
+    const frameNumber = i.toString().padStart(5, "0");
+    scene.load.image(
+      `blueWizardWalkFrame${i}`,
+      `/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk${frameNumber}.png`
+    );
+  }
+
+  // Load jump frames
+  for (let i = 0; i <= 7; i++) {
+    const frameNumber = i.toString().padStart(5, "0");
+    scene.load.image(
+      `blueWizardJumpFrame${i}`,
+      `/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_${frameNumber}.png`
+    );
+  }
+
+  // Load dash frames
+  for (let i = 0; i <= 15; i++) {
+    const frameNumber = i.toString().padStart(5, "0");
+    scene.load.image(
+      `blueWizardDashFrame${i}`,
+      `/assets/characters/BlueWizard/DashEffect/BlueWizardDash_${frameNumber}.png`
     );
   }
 };
