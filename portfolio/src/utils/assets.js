@@ -2,17 +2,26 @@
 
 export const loadAssets = (scene) => {
   // Load tileset
-  scene.load.image("tileset", "/assets/game-resources/tilesets/tileset1.png");
+  // scene.load.image("tileset", "/assets/game-resources/tilesets/tileset1.png");
 
   // Load parallax background layers
-  ["background1", "background2", "background3", "background4a"].forEach(
-    (key) => {
-      scene.load.image(
-        key,
-        `/assets/game-resources/parallax-backgrounds/caves/option1/${key}.png`
-      );
-    }
-  );
+  const basePath = "/assets/game-resources/parallax-backgrounds/forest/";
+  const layers = [
+    "01_Mist",
+    "02_Bushes",
+    "03_Particles",
+    "04_Forest",
+    "05_Particles",
+    "06_Forest",
+    "07_Forest",
+    "08_Forest",
+    "09_Forest",
+    "10_Sky",
+  ];
+
+  layers.forEach((layer) => {
+    scene.load.image(layer, `${basePath}${layer}.png`);
+  });
 
   // Load player frames
   for (let i = 0; i <= 19; i++) {

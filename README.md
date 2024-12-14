@@ -20,6 +20,8 @@ The game features a **Blue Wizard** in a **2D platformer** inspired by classic g
   Created by [Maaot](https://maaot.itch.io/mossy-cavern)
 - **Parallax Background & Cavern Tileset**:  
   Created by [Szadi Art](https://szadiart.itch.io/pixel-fantasy-caves)
+- **Tilemap Editor**:  
+  Created by [Thorbjørn Lindeijer](https://thorbjorn.itch.io/)
 
 ## Future Plans
 
