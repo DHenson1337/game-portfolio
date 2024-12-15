@@ -13,7 +13,7 @@ const Game = () => {
       height: 600,
       physics: {
         default: "arcade",
-        arcade: { gravity: { y: 300 }, debug: false },
+        arcade: { gravity: { y: 300 }, debug: true },
       },
       scene: [PreloadScene, GameScene], // Include both scenes
       parent: gameContainer.current,

@@ -2,8 +2,14 @@
 
 export const loadAssets = (scene) => {
   // Load tileset
-  // scene.load.image("tileset", "/assets/game-resources/tilesets/tileset1.png");
-  // scene.load.image("ground", "/assets/platforms/ground.png");
+
+  scene.load.image(
+    "test-tileset",
+    "/assets/game-resources/tilesets/test-tileset.png"
+  );
+
+  // Load the tilemap
+  scene.load.tilemapTiledJSON("test-map", "/assets/maps/test-map.json");
 
   // Load parallax background layers
   const basePath = "/assets/game-resources/parallax-backgrounds/forest/";

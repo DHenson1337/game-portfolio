@@ -4,6 +4,11 @@ export const createPlayer = (scene) => {
   const player = scene.physics.add.sprite(100, 450, "blueWizardIdleFrame1");
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
+
+  //Adjust player hitbox size (width, height) and offset (x, y)
+  player.body.setSize(85, 285); // Player hitbox size
+  // player.body.setOffset(85, 260); // Player hitbox offset
+
   return player;
 };
 

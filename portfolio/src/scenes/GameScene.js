@@ -12,8 +12,9 @@ export default class GameScene extends Phaser.Scene {
     //The Order matters, Load background first so player appears infront of it!
 
     // Set the world bounds larger than the visible screen
-    this.physics.world.setBounds(0, 0, 1600, 800); // Adjust width and height as needed
-    this.cameras.main.setBounds(0, 0, 1600, 800); // Adjust camera bounds to match the world
+
+    this.physics.world.setBounds(0, 0, 1800, 800); // Adjust width and height as needed
+    this.cameras.main.setBounds(0, 0, 1800, 800); // Adjust camera bounds to match the world
 
     // Add parallax layers in the refined order
     this.sky = this.add
@@ -53,10 +54,30 @@ export default class GameScene extends Phaser.Scene {
 
     // Add platforms
     // this.platforms = createPlatforms(this);
+    // Load the tilemap and tileset
+    const map = this.make.tilemap({ key: "test-map" }); // Make sure "test-map" matches your map key
+    const tileset = map.addTilesetImage("test-tileset", "test-tileset"); // Key in assets.js
 
-    // Create temporary platforms
-    // this.platforms = this.physics.add.staticGroup();
-    // this.platforms.create(400, 580, "ground").setScale(2).refreshBody(); // Properly size the platform
+    // Create layers from the map
+    const groundLayer = map.createLayer(
+      "Ground",
+      tileset,
+      0,
+      0,
+      this.game.config.height - map.heightInPixels
+    );
+    const obstacleLayer = map.createLayer("Obstacles", tileset);
+
+    // Add collision properties
+    groundLayer.setCollisionByProperty({ collides: true });
+    obstacleLayer.setCollisionByProperty({ collides: true });
+
+    //Debugging ground layer collisions
+    /*     groundLayer.renderDebug(this.add.graphics(), {
+      tileColor: null, // Non-colliding tiles will not be rendered
+      collidingTileColor: new Phaser.Display.Color(255, 0, 0, 200), // Red for colliding tiles
+      faceColor: new Phaser.Display.Color(0, 255, 0, 200), // Green for tile edges
+    }); */
 
     // Add player
     this.player = createPlayer(this);
@@ -67,6 +88,17 @@ export default class GameScene extends Phaser.Scene {
       this.physics.world.bounds.width,
       this.physics.world.bounds.height
     );
+
+    //Sets player starting position
+    this.player.setPosition(100, this.game.config.height - 200); // Adjust the y value accordingly
+
+    //Add Player Collision with Ground and Obstacle Layer
+    this.physics.add.collider(this.player, groundLayer);
+    this.physics.add.collider(this.player, obstacleLayer);
+
+    //Collision Debugging
+    console.log(groundLayer.hasTileAtWorldXY(this.player.x, this.player.y)); // Check tile collision
+    console.log(map.layers); // Log all layers and verify the layer exists
 
     addPlayerAnimations(this);
 
