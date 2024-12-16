@@ -11,52 +11,67 @@ export default class GameScene extends Phaser.Scene {
   create() {
     //The Order matters, Load background first so player appears infront of it!
 
+    // Load the tilemap and tileset
+    const map = this.make.tilemap({ key: "mossy-map" });
+    const tileset = map.addTilesetImage("Mossy - TileSet", "mossy-tileset");
+
     // Set the world bounds larger than the visible screen
-
-    this.physics.world.setBounds(0, 0, 1800, 800); // Adjust width and height as needed
-    this.cameras.main.setBounds(0, 0, 1800, 800); // Adjust camera bounds to match the world
-
-    // Add parallax layers in the refined order
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    // Add parallax layers dynamically
     this.sky = this.add
-      .tileSprite(400, 300, 800, 600, "10_Sky")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "10_Sky")
+      .setOrigin(0, 0)
       .setScrollFactor(0);
 
     this.backgroundForest = this.add
-      .tileSprite(400, 300, 800, 600, "09_Forest")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "09_Forest")
+      .setOrigin(0, 0)
       .setScrollFactor(0.1);
+
     this.distantForest = this.add
-      .tileSprite(400, 300, 800, 600, "08_Forest")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "08_Forest")
+      .setOrigin(0, 0)
       .setScrollFactor(0.2);
+
     this.midgroundForest = this.add
-      .tileSprite(400, 300, 800, 600, "07_Forest")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "07_Forest")
+      .setOrigin(0, 0)
       .setScrollFactor(0.3);
+
     this.nearMidgroundForest = this.add
-      .tileSprite(400, 300, 800, 600, "06_Forest")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "06_Forest")
+      .setOrigin(0, 0)
       .setScrollFactor(0.4);
+
     this.foregroundForest = this.add
-      .tileSprite(400, 300, 800, 600, "04_Forest")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "04_Forest")
+      .setOrigin(0, 0)
       .setScrollFactor(0.5);
 
     this.bushes = this.add
-      .tileSprite(400, 300, 800, 600, "02_Bushes")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "02_Bushes")
+      .setOrigin(0, 0)
       .setScrollFactor(0.6);
+
     this.particles1 = this.add
-      .tileSprite(400, 300, 800, 600, "03_Particles")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "03_Particles")
+      .setOrigin(0, 0)
       .setScrollFactor(0.7);
+
     this.particles2 = this.add
-      .tileSprite(400, 300, 800, 600, "05_Particles")
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "05_Particles")
+      .setOrigin(0, 0)
       .setScrollFactor(0.8);
 
     this.mist = this.add
-      .tileSprite(400, 300, 800, 600, "01_Mist")
-      .setScrollFactor(0.9);
-    this.mist.setAlpha(0.7); // Reduce opacity for a softer effect
+      .tileSprite(0, 0, this.scale.width, this.scale.height, "01_Mist")
+      .setOrigin(0, 0)
+      .setScrollFactor(0.9)
+      .setAlpha(0.7); // Reduce opacity for a softer effect
 
     // Add platforms
     // this.platforms = createPlatforms(this);
-    // Load the tilemap and tileset
-    const map = this.make.tilemap({ key: "test-map" }); // Make sure "test-map" matches your map key
-    const tileset = map.addTilesetImage("test-tileset", "test-tileset"); // Key in assets.js
 
     // Create layers from the map
     const groundLayer = map.createLayer(
@@ -73,11 +88,11 @@ export default class GameScene extends Phaser.Scene {
     obstacleLayer.setCollisionByProperty({ collides: true });
 
     //Debugging ground layer collisions
-    /*     groundLayer.renderDebug(this.add.graphics(), {
+    groundLayer.renderDebug(this.add.graphics(), {
       tileColor: null, // Non-colliding tiles will not be rendered
       collidingTileColor: new Phaser.Display.Color(255, 0, 0, 200), // Red for colliding tiles
       faceColor: new Phaser.Display.Color(0, 255, 0, 200), // Green for tile edges
-    }); */
+    });
 
     // Add player
     this.player = createPlayer(this);
@@ -90,7 +105,7 @@ export default class GameScene extends Phaser.Scene {
     );
 
     //Sets player starting position
-    this.player.setPosition(100, this.game.config.height - 200); // Adjust the y value accordingly
+    this.player.setPosition(100, this.game.config.height + 0); // Adjust the y value accordingly
 
     //Add Player Collision with Ground and Obstacle Layer
     this.physics.add.collider(this.player, groundLayer);

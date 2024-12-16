@@ -3,13 +3,14 @@
 export const loadAssets = (scene) => {
   // Load tileset
 
-  scene.load.image(
-    "test-tileset",
-    "/assets/game-resources/tilesets/test-tileset.png"
-  );
+  //The Entire Game Map
+  scene.load.tilemapTiledJSON("mossy-map", "/assets/maps/mossy-map.json");
 
-  // Load the tilemap
-  scene.load.tilemapTiledJSON("test-map", "/assets/maps/test-map.json");
+  //Map Assets
+  scene.load.image(
+    "mossy-tileset",
+    "/assets/game-resources/tilesets/mossy/Mossy - TileSet.png"
+  );
 
   // Load parallax background layers
   const basePath = "/assets/game-resources/parallax-backgrounds/forest/";
