@@ -1,15 +1,35 @@
 //Centralize all asset-loading logic.
 
 export const loadAssets = (scene) => {
-  // Load tileset
-
-  //The Entire Game Map
+  // Load the map
   scene.load.tilemapTiledJSON("mossy-map", "/assets/maps/mossy-map.json");
 
-  //Map Assets
+  //  paths for Mossy tilesets
   scene.load.image(
-    "mossy-tileset",
+    "mossy-ground",
     "/assets/game-resources/tilesets/mossy/Mossy - TileSet.png"
+  );
+  scene.load.image(
+    "mossy-background",
+    "/assets/game-resources/tilesets/mossy/Mossy - BackgroundDecoration.png"
+  );
+  scene.load.image(
+    "mossy-hazards",
+    "/assets/game-resources/tilesets/mossy/Mossy - Decorations&Hazards.png"
+  );
+  scene.load.image(
+    "mossy-hanging",
+    "/assets/game-resources/tilesets/mossy/Mossy - HangingPlants.png"
+  );
+
+  scene.load.image(
+    "mossy-hills",
+    "/assets/game-resources/tilesets/mossy/Mossy - MossyHills.png"
+  );
+
+  scene.load.image(
+    "mossy-floating",
+    "/assets/game-resources/tilesets/mossy/Mossy - FloatingPlatforms.png"
   );
 
   // Load parallax background layers

@@ -11,9 +11,57 @@ export default class GameScene extends Phaser.Scene {
   create() {
     //The Order matters, Load background first so player appears infront of it!
 
-    // Load the tilemap and tileset
+    // Load the tilemap
     const map = this.make.tilemap({ key: "mossy-map" });
-    const tileset = map.addTilesetImage("Mossy - TileSet", "mossy-tileset");
+
+    // Add tilesets (these names match Tiled tileset names)
+    const mossyBackground = map.addTilesetImage(
+      "MossyBackground",
+      "mossy-background"
+    );
+    const mossyFloatingPlatforms = map.addTilesetImage(
+      "MossyFloatingPlatforms",
+      "mossy-floating"
+    );
+    const mossyGround = map.addTilesetImage("MossyGround", "mossy-ground");
+    const mossyHangingPlants = map.addTilesetImage(
+      "MossyHangingPlants",
+      "mossy-hanging"
+    );
+    const mossyHazards = map.addTilesetImage("MossyHazards", "mossy-hazards");
+    const mossyHills = map.addTilesetImage("MossyHills", "mossy-hills");
+
+    const mossyDecorations = map.addTilesetImage(
+      "MossyHazards", // Tiled tileset name
+      "mossy-decorations" // Texture key from PreloadScene.js
+    );
+
+    // Create layers (these names match Tiled layer names)
+    const backgroundLayer = map.createLayer(
+      "Background",
+      mossyBackground,
+      0,
+      0
+    );
+    const groundLayer = map.createLayer("Ground", mossyGround, 0, 0);
+    const hillsLayer = map.createLayer("Hills", mossyHills, 0, 0);
+    const hazardsLayer = map.createLayer("Hazards", mossyHazards, 0, 0);
+    const decorationsLayer = map.createLayer(
+      "Decorations",
+      mossyHangingPlants,
+      0,
+      0
+    );
+    const foregroundLayer = map.createLayer(
+      "Foreground",
+      mossyFloatingPlatforms,
+      0,
+      0
+    );
+
+    // Set collision on the ground and hazards
+    groundLayer.setCollisionByProperty({ collides: true });
+    hazardsLayer.setCollisionByProperty({ collides: true });
 
     // Set the world bounds larger than the visible screen
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -73,19 +121,9 @@ export default class GameScene extends Phaser.Scene {
     // Add platforms
     // this.platforms = createPlatforms(this);
 
-    // Create layers from the map
-    const groundLayer = map.createLayer(
-      "Ground",
-      tileset,
-      0,
-      0,
-      this.game.config.height - map.heightInPixels
-    );
-    const obstacleLayer = map.createLayer("Obstacles", tileset);
-
-    // Add collision properties
-    groundLayer.setCollisionByProperty({ collides: true });
-    obstacleLayer.setCollisionByProperty({ collides: true });
+    // // Add collision properties
+    // groundLayer.setCollisionByProperty({ collides: true });
+    // hazardsLayer.setCollisionByProperty({ collides: true });
 
     //Debugging ground layer collisions
     groundLayer.renderDebug(this.add.graphics(), {
@@ -105,15 +143,25 @@ export default class GameScene extends Phaser.Scene {
     );
 
     //Sets player starting position
-    this.player.setPosition(100, this.game.config.height + 0); // Adjust the y value accordingly
+    this.player.setPosition(0, map.heightInPixels - 1380);
 
-    //Add Player Collision with Ground and Obstacle Layer
+    //Add Player Collision with Ground and Hazard Layer
     this.physics.add.collider(this.player, groundLayer);
-    this.physics.add.collider(this.player, obstacleLayer);
+    this.physics.add.collider(this.player, hazardsLayer, () => {
+      console.log("Player hit a hazard!");
+    });
 
     //Collision Debugging
     console.log(groundLayer.hasTileAtWorldXY(this.player.x, this.player.y)); // Check tile collision
     console.log(map.layers); // Log all layers and verify the layer exists
+
+    //Setting Depth for each layer
+    backgroundLayer.setDepth(0);
+    hillsLayer.setDepth(1);
+    groundLayer.setDepth(2);
+    hazardsLayer.setDepth(3);
+    decorationsLayer.setDepth(4);
+    this.player.setDepth(5);
 
     addPlayerAnimations(this);
 
