@@ -2,34 +2,43 @@
 
 export const loadAssets = (scene) => {
   // Load the map
-  scene.load.tilemapTiledJSON("mossy-map", "/assets/maps/mossy-map.json");
+  // Load the new tilemap
+  scene.load.tilemapTiledJSON("new-map", "/assets/maps/new-map.json");
 
-  //  paths for Mossy tilesets
+  // Load tilesets
   scene.load.image(
-    "mossy-ground",
-    "/assets/game-resources/tilesets/mossy/Mossy - TileSet.png"
+    "TX Tileset Ground",
+    "/assets/game-resources/tilesets/TX Tileset Ground.png"
   );
   scene.load.image(
-    "mossy-background",
-    "/assets/game-resources/tilesets/mossy/Mossy - BackgroundDecoration.png"
-  );
-  scene.load.image(
-    "mossy-hazards",
-    "/assets/game-resources/tilesets/mossy/Mossy - Decorations&Hazards.png"
-  );
-  scene.load.image(
-    "mossy-hanging",
-    "/assets/game-resources/tilesets/mossy/Mossy - HangingPlants.png"
+    "TX Village Props",
+    "/assets/game-resources/tilesets/TX Village Props.png"
   );
 
-  scene.load.image(
-    "mossy-hills",
-    "/assets/game-resources/tilesets/mossy/Mossy - MossyHills.png"
+  // Load animated tilesets as spritesheets
+  scene.load.spritesheet(
+    "TX Chest Animation",
+    "/assets/game-resources/tilesets/TX Chest Animation.png",
+    {
+      frameWidth: 32,
+      frameHeight: 32,
+    }
   );
-
-  scene.load.image(
-    "mossy-floating",
-    "/assets/game-resources/tilesets/mossy/Mossy - FloatingPlatforms.png"
+  scene.load.spritesheet(
+    "TX FX Torch Flame",
+    "/assets/game-resources/tilesets/TX FX Torch Flame.png",
+    {
+      frameWidth: 32,
+      frameHeight: 32,
+    }
+  );
+  scene.load.spritesheet(
+    "TX FX Flame",
+    "/assets/game-resources/tilesets/TX FX Flame.png",
+    {
+      frameWidth: 32,
+      frameHeight: 32, // Manually set this even if the sprite isn't exactly aligned
+    }
   );
 
   // Load player frames

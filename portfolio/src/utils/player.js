@@ -6,6 +6,7 @@ export const createPlayer = (scene) => {
   player.setCollideWorldBounds(true);
 
   //Adjust player hitbox size (width, height) and offset (x, y)
+  player.setScale(0.3); // Scale Player Size
   player.body.setSize(85, 285); // Player hitbox size
   // player.body.setOffset(85, 260); // Player hitbox offset
 

@@ -11,99 +11,70 @@ export default class GameScene extends Phaser.Scene {
   create() {
     //The Order matters, Load background first so player appears infront of it!
 
-    // Load the tilemap
-    const map = this.make.tilemap({ key: "mossy-map" });
+    // Load the new tilemap
+    const map = this.make.tilemap({ key: "new-map" });
 
-    // Add tilesets (these names match Tiled tileset names)
-    const mossyBackground = map.addTilesetImage(
-      "MossyBackground",
-      "mossy-background"
+    // Add tilesets
+    const tilesetGround = map.addTilesetImage(
+      "TX Tileset Ground",
+      "TX Tileset Ground"
     );
-    const mossyFloatingPlatforms = map.addTilesetImage(
-      "MossyFloatingPlatforms",
-      "mossy-floating"
-    );
-    const mossyGround = map.addTilesetImage("MossyGround", "mossy-ground");
-    const mossyHangingPlants = map.addTilesetImage(
-      "MossyHangingPlants",
-      "mossy-hanging"
-    );
-    const mossyHazards = map.addTilesetImage("MossyHazards", "mossy-hazards");
-    const mossyHills = map.addTilesetImage("MossyHills", "mossy-hills");
-
-    const mossyDecorations = map.addTilesetImage(
-      "MossyHazards", // Tiled tileset name
-      "mossy-decorations" // Texture key from PreloadScene.js
+    const tilesetProps = map.addTilesetImage(
+      "TX Village Props",
+      "TX Village Props"
     );
 
-    // Create layers (these names match Tiled layer names)
-    const backgroundLayer = map.createLayer(
-      "Background",
-      mossyBackground,
+    // Create Layers
+    const groundLayer = map.createLayer("Ground", tilesetGround, 0, 0);
+    const floatingPlatformsLayer = map.createLayer(
+      "FloatingPlatforms",
+      tilesetGround,
       0,
       0
     );
-    const groundLayer = map.createLayer("Ground", mossyGround, 0, 0);
-    const hillsLayer = map.createLayer("Hills", mossyHills, 0, 0);
-    const hazardsLayer = map.createLayer("Hazards", mossyHazards, 0, 0);
-    const decorationsLayer = map.createLayer(
-      "Decorations",
-      mossyHangingPlants,
+    const backgroundPropsLayer = map.createLayer(
+      "BackgroundProps",
+      tilesetProps,
       0,
       0
     );
-    const foregroundLayer = map.createLayer(
-      "Foreground",
-      mossyFloatingPlatforms,
-      0,
-      0
-    );
+    const obstaclesLayer = map.createLayer("Obstacles", tilesetProps, 0, 0);
+    const animationsLayer = map.createLayer("Animations", tilesetGround, 0, 0);
 
-    // Set collision on the ground and hazards
+    // Set Collision on Ground, Floating Platforms, and Obstacles
     groundLayer.setCollisionByProperty({ collides: true });
-    hazardsLayer.setCollisionByProperty({ collides: true });
+    floatingPlatformsLayer.setCollisionByProperty({ collides: true });
+    obstaclesLayer.setCollisionByProperty({ collides: true });
+
+    // Debugging collision (optional)
+    floatingPlatformsLayer.renderDebug(this.add.graphics(), {
+      tileColor: null,
+      collidingTileColor: new Phaser.Display.Color(255, 0, 0, 200),
+    });
 
     // Set the world bounds larger than the visible screen
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    //Debugging ground layer collisions
-    groundLayer.renderDebug(this.add.graphics(), {
-      tileColor: null, // Non-colliding tiles will not be rendered
-      collidingTileColor: new Phaser.Display.Color(255, 0, 0, 200), // Red for colliding tiles
-      faceColor: new Phaser.Display.Color(0, 255, 0, 200), // Green for tile edges
-    });
-
-    // Add player
+    // Add Player
     this.player = createPlayer(this);
-    this.cameras.main.startFollow(this.player, true, 0.1, 0.1); // Smooth follow effect
-    this.cameras.main.setBounds(
-      0,
-      0,
-      this.physics.world.bounds.width,
-      this.physics.world.bounds.height
-    );
+    this.physics.add.collider(this.player, groundLayer);
+    this.physics.add.collider(this.player, floatingPlatformsLayer);
+    this.physics.add.collider(this.player, obstaclesLayer);
+
+    // Camera Follow
+    this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+    // Depth Sorting
+    backgroundPropsLayer.setDepth(0); // Background Props
+    groundLayer.setDepth(1); // Main Ground
+    floatingPlatformsLayer.setDepth(2); // Platforms
+    obstaclesLayer.setDepth(3); // Obstacles
+    this.player.setDepth(4); // Player
 
     //Sets player starting position
     this.player.setPosition(0, map.heightInPixels - 1380);
-
-    //Add Player Collision with Ground and Hazard Layer
-    this.physics.add.collider(this.player, groundLayer);
-    this.physics.add.collider(this.player, hazardsLayer, () => {
-      console.log("Player hit a hazard!");
-    });
-
-    //Collision Debugging
-    console.log(groundLayer.hasTileAtWorldXY(this.player.x, this.player.y)); // Check tile collision
-    console.log(map.layers); // Log all layers and verify the layer exists
-
-    //Setting Depth for each layer
-    backgroundLayer.setDepth(0);
-    hillsLayer.setDepth(1);
-    groundLayer.setDepth(2);
-    hazardsLayer.setDepth(3);
-    decorationsLayer.setDepth(4);
-    this.player.setDepth(5);
 
     addPlayerAnimations(this);
 
@@ -352,3 +323,28 @@ this.mist = this.add
     this.particles1.tilePositionX += 0.8;
     this.particles2.tilePositionX += 0.9;
     this.mist.tilePositionX += 1.0; */
+
+/* 
+    const map = this.make.tilemap({ key: "mossy-map" });
+
+    // Add tilesets (these names match Tiled tileset names)
+    const mossyBackground = map.addTilesetImage(
+      "MossyBackground",
+      "mossy-background"
+    );
+    const mossyFloatingPlatforms = map.addTilesetImage(
+      "MossyFloatingPlatforms",
+      "mossy-floating"
+    );
+    const mossyGround = map.addTilesetImage("MossyGround", "mossy-ground");
+    const mossyHangingPlants = map.addTilesetImage(
+      "MossyHangingPlants",
+      "mossy-hanging"
+    );
+    const mossyHazards = map.addTilesetImage("MossyHazards", "mossy-hazards");
+    const mossyHills = map.addTilesetImage("MossyHills", "mossy-hills");
+
+    const mossyDecorations = map.addTilesetImage(
+      "MossyHazards", // Tiled tileset name
+      "mossy-decorations" // Texture key from PreloadScene.js
+    ); */
