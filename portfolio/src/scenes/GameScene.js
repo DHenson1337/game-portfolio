@@ -66,64 +66,6 @@ export default class GameScene extends Phaser.Scene {
     // Set the world bounds larger than the visible screen
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    // Add parallax layers dynamically
-    this.sky = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "10_Sky")
-      .setOrigin(0, 0)
-      .setScrollFactor(0);
-
-    this.backgroundForest = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "09_Forest")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.1);
-
-    this.distantForest = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "08_Forest")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.2);
-
-    this.midgroundForest = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "07_Forest")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.3);
-
-    this.nearMidgroundForest = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "06_Forest")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.4);
-
-    this.foregroundForest = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "04_Forest")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.5);
-
-    this.bushes = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "02_Bushes")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.6);
-
-    this.particles1 = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "03_Particles")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.7);
-
-    this.particles2 = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "05_Particles")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.8);
-
-    this.mist = this.add
-      .tileSprite(0, 0, this.scale.width, this.scale.height, "01_Mist")
-      .setOrigin(0, 0)
-      .setScrollFactor(0.9)
-      .setAlpha(0.7); // Reduce opacity for a softer effect
-
-    // Add platforms
-    // this.platforms = createPlatforms(this);
-
-    // // Add collision properties
-    // groundLayer.setCollisionByProperty({ collides: true });
-    // hazardsLayer.setCollisionByProperty({ collides: true });
 
     //Debugging ground layer collisions
     groundLayer.renderDebug(this.add.graphics(), {
@@ -200,30 +142,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    // Synchronize parallax background positions with camera scroll
-    this.sky.tilePositionX = this.cameras.main.scrollX * 0.01;
-    this.backgroundForest.tilePositionX = this.cameras.main.scrollX * 0.1;
-    this.distantForest.tilePositionX = this.cameras.main.scrollX * 0.2;
-    this.midgroundForest.tilePositionX = this.cameras.main.scrollX * 0.3;
-    this.nearMidgroundForest.tilePositionX = this.cameras.main.scrollX * 0.4;
-    this.foregroundForest.tilePositionX = this.cameras.main.scrollX * 0.5;
-    this.bushes.tilePositionX = this.cameras.main.scrollX * 0.6;
-    this.particles1.tilePositionX = this.cameras.main.scrollX * 0.7;
-    this.particles2.tilePositionX = this.cameras.main.scrollX * 0.8;
-    this.mist.tilePositionX = this.cameras.main.scrollX * 0.9;
-
-    /*  // Scroll parallax background
-    this.sky.tilePositionX += 0.01;
-    this.backgroundForest.tilePositionX += 0.1;
-    this.distantForest.tilePositionX += 0.2;
-    this.midgroundForest.tilePositionX += 0.3;
-    this.nearMidgroundForest.tilePositionX += 0.4;
-    this.foregroundForest.tilePositionX += 0.5;
-    this.bushes.tilePositionX += 0.6;
-    this.particles1.tilePositionX += 0.8;
-    this.particles2.tilePositionX += 0.9;
-    this.mist.tilePositionX += 1.0; */
-
     // === PLAYER MOVEMENT AND ANIMATION LOGIC ===
 
     const speed = 260; // Horizontal movement speed
@@ -348,3 +266,89 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 }
+
+//=======================================OLD CODE ===========================================
+// Add parallax layers dynamically
+/*  this.sky = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "10_Sky")
+ .setOrigin(0, 0)
+ .setScrollFactor(0);
+
+this.backgroundForest = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "09_Forest")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.1);
+
+this.distantForest = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "08_Forest")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.2);
+
+this.midgroundForest = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "07_Forest")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.3);
+
+this.nearMidgroundForest = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "06_Forest")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.4);
+
+this.foregroundForest = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "04_Forest")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.5);
+
+this.bushes = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "02_Bushes")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.6);
+
+this.particles1 = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "03_Particles")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.7);
+
+this.particles2 = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "05_Particles")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.8);
+
+this.mist = this.add
+ .tileSprite(0, 0, this.scale.width, this.scale.height, "01_Mist")
+ .setOrigin(0, 0)
+ .setScrollFactor(0.9)
+ .setAlpha(0.7); // Reduce opacity for a softer effect
+ */
+// Add platforms
+// this.platforms = createPlatforms(this);
+
+// // Add collision properties
+// groundLayer.setCollisionByProperty({ collides: true });
+// hazardsLayer.setCollisionByProperty({ collides: true });
+
+/* 
+
+    // Synchronize parallax background positions with camera scroll
+    this.sky.tilePositionX = this.cameras.main.scrollX * 0.01;
+    this.backgroundForest.tilePositionX = this.cameras.main.scrollX * 0.1;
+    this.distantForest.tilePositionX = this.cameras.main.scrollX * 0.2;
+    this.midgroundForest.tilePositionX = this.cameras.main.scrollX * 0.3;
+    this.nearMidgroundForest.tilePositionX = this.cameras.main.scrollX * 0.4;
+    this.foregroundForest.tilePositionX = this.cameras.main.scrollX * 0.5;
+    this.bushes.tilePositionX = this.cameras.main.scrollX * 0.6;
+    this.particles1.tilePositionX = this.cameras.main.scrollX * 0.7;
+    this.particles2.tilePositionX = this.cameras.main.scrollX * 0.8;
+    this.mist.tilePositionX = this.cameras.main.scrollX * 0.9;
+
+    /*  // Scroll parallax background
+    this.sky.tilePositionX += 0.01;
+    this.backgroundForest.tilePositionX += 0.1;
+    this.distantForest.tilePositionX += 0.2;
+    this.midgroundForest.tilePositionX += 0.3;
+    this.nearMidgroundForest.tilePositionX += 0.4;
+    this.foregroundForest.tilePositionX += 0.5;
+    this.bushes.tilePositionX += 0.6;
+    this.particles1.tilePositionX += 0.8;
+    this.particles2.tilePositionX += 0.9;
+    this.mist.tilePositionX += 1.0; */

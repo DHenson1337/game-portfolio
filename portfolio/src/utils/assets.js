@@ -32,25 +32,6 @@ export const loadAssets = (scene) => {
     "/assets/game-resources/tilesets/mossy/Mossy - FloatingPlatforms.png"
   );
 
-  // Load parallax background layers
-  const basePath = "/assets/game-resources/parallax-backgrounds/forest/";
-  const layers = [
-    "01_Mist",
-    "02_Bushes",
-    "03_Particles",
-    "04_Forest",
-    "05_Particles",
-    "06_Forest",
-    "07_Forest",
-    "08_Forest",
-    "09_Forest",
-    "10_Sky",
-  ];
-
-  layers.forEach((layer) => {
-    scene.load.image(layer, `${basePath}${layer}.png`);
-  });
-
   // Load player frames
   for (let i = 0; i <= 19; i++) {
     const frameNumber = i.toString().padStart(5, "0");
@@ -87,3 +68,24 @@ export const loadAssets = (scene) => {
     );
   }
 };
+
+//==================================OLD CODE =========================
+
+/*   // Load parallax background layers
+  const basePath = "/assets/game-resources/parallax-backgrounds/forest/";
+  const layers = [
+    "01_Mist",
+    "02_Bushes",
+    "03_Particles",
+    "04_Forest",
+    "05_Particles",
+    "06_Forest",
+    "07_Forest",
+    "08_Forest",
+    "09_Forest",
+    "10_Sky",
+  ];
+
+  layers.forEach((layer) => {
+    scene.load.image(layer, `${basePath}${layer}.png`);
+  }); */
