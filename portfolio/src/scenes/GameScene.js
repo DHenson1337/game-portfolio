@@ -11,7 +11,69 @@ export default class GameScene extends Phaser.Scene {
   create() {
     //The Order matters, Load background first so player appears infront of it!
 
-    // Load the new tilemap
+    // === Add the Fire Cursor GIF Using DOM Element ===
+    const fireCursor = document.createElement("img");
+    fireCursor.src = "/assets/game-resources/particles/little-purple-fire.gif";
+    fireCursor.style.position = "absolute";
+    fireCursor.style.pointerEvents = "none";
+    fireCursor.style.width = "120px"; //Cursor Width
+    fireCursor.style.height = "120px"; // Cursor Length
+    document.body.appendChild(fireCursor);
+
+    // === Hide the Default Cursor ===
+    this.input.setDefaultCursor("none");
+
+    // === Update Cursor Position ===
+    this.input.on("pointermove", (pointer) => {
+      fireCursor.style.left = `${pointer.x - 20}px`;
+      fireCursor.style.top = `${pointer.y - 20}px`;
+    });
+
+    // Clean up cursor when the scene shuts down
+    this.events.on("shutdown", () => {
+      fireCursor.remove();
+    });
+    const screenWidth = this.scale.width;
+    const screenHeight = this.scale.height;
+
+    // === Add Parallax Background Layers (Scaled to Full Screen) ===
+    this.layer1 = this.add
+      .image(0, 0, "layer1")
+      .setOrigin(0, 0)
+      .setScrollFactor(0)
+      .setDisplaySize(screenWidth, screenHeight);
+
+    this.layer2 = this.add
+      .image(0, 0, "layer2")
+      .setOrigin(0, 0)
+      .setScrollFactor(0.2)
+      .setDisplaySize(screenWidth, screenHeight);
+
+    this.layer3 = this.add
+      .image(0, 0, "layer3")
+      .setOrigin(0, 0)
+      .setScrollFactor(0.4)
+      .setDisplaySize(screenWidth, screenHeight);
+
+    this.layer4 = this.add
+      .image(0, 0, "layer4")
+      .setOrigin(0, 0)
+      .setScrollFactor(0.6)
+      .setDisplaySize(screenWidth, screenHeight);
+
+    this.layer5 = this.add
+      .image(0, 0, "layer5")
+      .setOrigin(0, 0)
+      .setScrollFactor(0.8)
+      .setDisplaySize(screenWidth, screenHeight);
+
+    this.layer6 = this.add
+      .image(0, 0, "layer6")
+      .setOrigin(0, 0)
+      .setScrollFactor(1)
+      .setDisplaySize(screenWidth, screenHeight);
+
+    // Load tilemap
     const map = this.make.tilemap({ key: "new-map" });
 
     // Add tilesets
@@ -52,9 +114,9 @@ export default class GameScene extends Phaser.Scene {
       collidingTileColor: new Phaser.Display.Color(255, 0, 0, 200),
     });
 
+    //Animatiion Would go Here, cause order matters you know. . .
+
     // Set the world bounds larger than the visible screen
-    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     // Add Player
     this.player = createPlayer(this);
@@ -65,6 +127,7 @@ export default class GameScene extends Phaser.Scene {
     // Camera Follow
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     // Depth Sorting
     backgroundPropsLayer.setDepth(0); // Background Props
@@ -72,6 +135,11 @@ export default class GameScene extends Phaser.Scene {
     floatingPlatformsLayer.setDepth(2); // Platforms
     obstaclesLayer.setDepth(3); // Obstacles
     this.player.setDepth(4); // Player
+
+    //Debugging World Size
+    console.log("Map Width (pixels):", map.widthInPixels);
+    console.log("Map Height (pixels):", map.heightInPixels);
+    console.log("World Bounds:", this.physics.world.bounds);
 
     //Sets player starting position
     this.player.setPosition(0, map.heightInPixels - 1380);
@@ -113,6 +181,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
+    // Parallax effect
+    // Horizontal Parallax Scrolling
+
     // === PLAYER MOVEMENT AND ANIMATION LOGIC ===
 
     const speed = 260; // Horizontal movement speed

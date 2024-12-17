@@ -1,8 +1,33 @@
 //Centralize all asset-loading logic.
 
 export const loadAssets = (scene) => {
-  // Load the map
-  // Load the new tilemap
+  // Load parallax layers
+  scene.load.image(
+    "layer1",
+    "/assets/game-resources/parallax-backgrounds/nightForest/1.png"
+  );
+  scene.load.image(
+    "layer2",
+    "/assets/game-resources/parallax-backgrounds/nightForest/2.png"
+  );
+  scene.load.image(
+    "layer3",
+    "/assets/game-resources/parallax-backgrounds/nightForest/3.png"
+  );
+  scene.load.image(
+    "layer4",
+    "/assets/game-resources/parallax-backgrounds/nightForest/4.png"
+  );
+  scene.load.image(
+    "layer5",
+    "/assets/game-resources/parallax-backgrounds/nightForest/5.png"
+  );
+  scene.load.image(
+    "layer6",
+    "/assets/game-resources/parallax-backgrounds/nightForest/6.png"
+  );
+
+  // Load the tilemap
   scene.load.tilemapTiledJSON("new-map", "/assets/maps/new-map.json");
 
   // Load tilesets
@@ -20,16 +45,16 @@ export const loadAssets = (scene) => {
     "TX Chest Animation",
     "/assets/game-resources/tilesets/TX Chest Animation.png",
     {
-      frameWidth: 32,
-      frameHeight: 32,
+      frameWidth: 64.9,
+      frameHeight: 64,
     }
   );
   scene.load.spritesheet(
     "TX FX Torch Flame",
     "/assets/game-resources/tilesets/TX FX Torch Flame.png",
     {
-      frameWidth: 32,
-      frameHeight: 32,
+      frameWidth: 64,
+      frameHeight: 64,
     }
   );
   scene.load.spritesheet(
@@ -38,6 +63,16 @@ export const loadAssets = (scene) => {
     {
       frameWidth: 32,
       frameHeight: 32, // Manually set this even if the sprite isn't exactly aligned
+    }
+  );
+
+  // Load Particles
+  scene.load.spritesheet(
+    "purpleFire",
+    "/assets/game-resources/particles/little-purple-fire.png",
+    {
+      frameWidth: 1149, //Adjust to the width of a single frame
+      frameHeight: 1115, // Adjust to the height of a single frame
     }
   );
 

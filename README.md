@@ -6,7 +6,7 @@ Created with **React.js** and **Phaser.js**
 ## About the Game
 
 This is my first attempt at making a video game, and I decided to use it as part of my portfolio!  
-The game features a **Blue Wizard** in a **2D platformer** inspired by classic games like Mario.
+The game features a **Blue Wizard** in a **2D platformer** inspired by classic games like Super Mario.
 
 ## Features
 
@@ -18,8 +18,8 @@ The game features a **Blue Wizard** in a **2D platformer** inspired by classic g
 
 - **Main Character (Blue Wizard)**:  
   Created by [Maaot](https://maaot.itch.io/mossy-cavern)
-- **Parallax Background & Cavern Tileset**:  
-  Created by [Szadi Art](https://szadiart.itch.io/pixel-fantasy-caves)
+- **TX Village TileSets**:  
+  Created by [Cainos](https://cainos.itch.io/pixel-art-platformer-village-props)
 - **Tilemap Editor**:  
   Created by [Thorbjørn Lindeijer](https://thorbjorn.itch.io/)
 
