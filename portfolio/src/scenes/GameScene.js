@@ -1,4 +1,5 @@
 // Handle platforms, player, and backgrounds using utility functions
+import fireCursorSrc from "./phaser-editor/assets/particles/little-purple-fire.gif";
 
 import { createPlatforms } from "../utils/platforms";
 import { createPlayer, addPlayerAnimations } from "../utils/player";
@@ -13,7 +14,7 @@ export default class GameScene extends Phaser.Scene {
 
     // Add the Fire Cursor GIF Using DOM Element
     const fireCursor = document.createElement("img");
-    fireCursor.src = "/assets/game-resources/particles/little-purple-fire.gif";
+    fireCursor.src = fireCursorSrc;
     fireCursor.style.position = "absolute";
     fireCursor.style.pointerEvents = "none";
     fireCursor.style.width = "120px"; // Adjust size

@@ -75,7 +75,7 @@ export const loadAssets = (scene) => {
   // Load Particles
   scene.load.spritesheet(
     "purpleFire",
-    "/assets/game-resources/particles/little-purple-fire.png",
+    "src/scenes/phaser-editor/assets/particles/little-purple-fire.png",
     {
       frameWidth: 1149, //Adjust to the width of a single frame
       frameHeight: 1115, // Adjust to the height of a single frame
@@ -87,7 +87,7 @@ export const loadAssets = (scene) => {
     const frameNumber = i.toString().padStart(5, "0");
     scene.load.image(
       `blueWizardIdleFrame${i + 1}`,
-      `/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle${frameNumber}.png`
+      `src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle${frameNumber}.png`
     );
   }
 
@@ -96,7 +96,7 @@ export const loadAssets = (scene) => {
     const frameNumber = i.toString().padStart(5, "0");
     scene.load.image(
       `blueWizardWalkFrame${i}`,
-      `/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk${frameNumber}.png`
+      `src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk${frameNumber}.png`
     );
   }
 
@@ -105,7 +105,7 @@ export const loadAssets = (scene) => {
     const frameNumber = i.toString().padStart(5, "0");
     scene.load.image(
       `blueWizardJumpFrame${i}`,
-      `/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_${frameNumber}.png`
+      `src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_${frameNumber}.png`
     );
   }
 
@@ -114,7 +114,7 @@ export const loadAssets = (scene) => {
     const frameNumber = i.toString().padStart(5, "0");
     scene.load.image(
       `blueWizardDashFrame${i}`,
-      `/assets/characters/BlueWizard/DashEffect/BlueWizardDash_${frameNumber}.png`
+      `src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_${frameNumber}.png`
     );
   }
 };
