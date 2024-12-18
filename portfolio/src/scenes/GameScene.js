@@ -11,33 +11,39 @@ export default class GameScene extends Phaser.Scene {
   create() {
     //The Order matters, Load background first so player appears infront of it!
 
-    // === Add the Fire Cursor GIF Using DOM Element ===
+    // Add the Fire Cursor GIF Using DOM Element
     const fireCursor = document.createElement("img");
     fireCursor.src = "/assets/game-resources/particles/little-purple-fire.gif";
     fireCursor.style.position = "absolute";
     fireCursor.style.pointerEvents = "none";
-    fireCursor.style.width = "120px"; //Cursor Width
-    fireCursor.style.height = "120px"; // Cursor Length
+    fireCursor.style.width = "120px"; // Adjust size
+    fireCursor.style.height = "120px";
     document.body.appendChild(fireCursor);
 
-    // === Hide the Default Cursor ===
+    // Get the game canvas position
+    const canvas = this.sys.game.canvas;
+    const rect = canvas.getBoundingClientRect();
+
+    // Hide the Default Cursor
     this.input.setDefaultCursor("none");
 
-    // === Update Cursor Position ===
+    // Update Cursor Position
     this.input.on("pointermove", (pointer) => {
-      fireCursor.style.left = `${pointer.x - 20}px`;
-      fireCursor.style.top = `${pointer.y - 20}px`;
+      fireCursor.style.left = `${rect.left + pointer.x - 60}px`; // Cursor Y value
+      fireCursor.style.top = `${rect.top + pointer.y - 55}px`; //Cursor X Value
     });
 
     // Clean up cursor when the scene shuts down
     this.events.on("shutdown", () => {
       fireCursor.remove();
     });
-    const screenWidth = this.scale.width;
-    const screenHeight = this.scale.height;
+
+    //#region Old Tileset Logic and Parallax
+    // const screenWidth = this.scale.width;
+    // const screenHeight = this.scale.height;
 
     // === Add Parallax Background Layers (Scaled to Full Screen) ===
-    this.layer1 = this.add
+    /* this.layer1 = this.add
       .image(0, 0, "layer1")
       .setOrigin(0, 0)
       .setScrollFactor(0)
@@ -113,36 +119,40 @@ export default class GameScene extends Phaser.Scene {
       tileColor: null,
       collidingTileColor: new Phaser.Display.Color(255, 0, 0, 200),
     });
-
+ */
     //Animatiion Would go Here, cause order matters you know. . .
 
     // Set the world bounds larger than the visible screen
+    //#endregion
+
+    //Add Phaser Layers
 
     // Add Player
     this.player = createPlayer(this);
-    this.physics.add.collider(this.player, groundLayer);
-    this.physics.add.collider(this.player, floatingPlatformsLayer);
-    this.physics.add.collider(this.player, obstaclesLayer);
+    //Old tileset logic
+    // this.physics.add.collider(this.player, groundLayer);
+    // this.physics.add.collider(this.player, floatingPlatformsLayer);
+    // this.physics.add.collider(this.player, obstaclesLayer);
 
     // Camera Follow
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    // this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    // this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    // Depth Sorting
+    /*   // Depth Sorting
     backgroundPropsLayer.setDepth(0); // Background Props
     groundLayer.setDepth(1); // Main Ground
     floatingPlatformsLayer.setDepth(2); // Platforms
     obstaclesLayer.setDepth(3); // Obstacles
-    this.player.setDepth(4); // Player
+    this.player.setDepth(4); // Player */
 
     //Debugging World Size
-    console.log("Map Width (pixels):", map.widthInPixels);
-    console.log("Map Height (pixels):", map.heightInPixels);
-    console.log("World Bounds:", this.physics.world.bounds);
+    // console.log("Map Width (pixels):", map.widthInPixels);
+    // console.log("Map Height (pixels):", map.heightInPixels);
+    // console.log("World Bounds:", this.physics.world.bounds);
 
     //Sets player starting position
-    this.player.setPosition(0, map.heightInPixels - 1380);
+    // this.player.setPosition(0, map.heightInPixels - 1380);
 
     addPlayerAnimations(this);
 

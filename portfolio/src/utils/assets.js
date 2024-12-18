@@ -2,7 +2,9 @@
 
 export const loadAssets = (scene) => {
   // Load parallax layers
-  scene.load.image(
+
+  //#region Dark Forest Parallax
+  /*  scene.load.image(
     "layer1",
     "/assets/game-resources/parallax-backgrounds/nightForest/1.png"
   );
@@ -25,10 +27,13 @@ export const loadAssets = (scene) => {
   scene.load.image(
     "layer6",
     "/assets/game-resources/parallax-backgrounds/nightForest/6.png"
-  );
+  ); */
+  //#endregion
 
   // Load the tilemap
-  scene.load.tilemapTiledJSON("new-map", "/assets/maps/new-map.json");
+
+  //#region Old tile Map Logic
+  /*  scene.load.tilemapTiledJSON("new-map", "/assets/maps/new-map.json");
 
   // Load tilesets
   scene.load.image(
@@ -64,7 +69,8 @@ export const loadAssets = (scene) => {
       frameWidth: 32,
       frameHeight: 32, // Manually set this even if the sprite isn't exactly aligned
     }
-  );
+  ); */
+  //#endregion
 
   // Load Particles
   scene.load.spritesheet(
