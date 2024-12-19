@@ -7,8 +7,11 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   preload() {
-    // Load all game assets using utility
-    loadAssets(this);
+    // Load assets from Phaser Editor's asset-pack.json
+    this.load.pack("asset-pack", "src/scenes/phaser-editor/asset-pack.json");
+
+    // Load additional assets using the utility function
+    // loadAssets(this);
   }
 
   create() {

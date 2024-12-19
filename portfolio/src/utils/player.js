@@ -22,7 +22,7 @@ export const addPlayerAnimations = (scene) => {
   scene.anims.create({
     key: "idle",
     frames: idleFrames,
-    frameRate: 10,
+    frameRate: 7,
     repeat: -1,
   });
 

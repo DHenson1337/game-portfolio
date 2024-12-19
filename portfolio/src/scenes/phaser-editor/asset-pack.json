@@ -1,0 +1,332 @@
+{
+  "section1": {
+    "files": [
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame1",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00000.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame2",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00001.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame3",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00002.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame4",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00003.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame5",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00004.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame6",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00005.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame7",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00006.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame8",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00007.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame9",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00008.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame10",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00009.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame11",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00010.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame12",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00011.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame13",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00012.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame14",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00013.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame15",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00014.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame16",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00015.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame17",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00016.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame18",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00017.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame19",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00018.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardIdleFrame20",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00019.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame0",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00000.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame1",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00001.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame2",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00002.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame3",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00003.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame4",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00004.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame5",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00005.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame6",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00006.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame7",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00007.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame8",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00008.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame9",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00009.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame10",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00010.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame11",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00011.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame12",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00012.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame13",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00013.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame14",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00014.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame15",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00015.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame16",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00016.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame17",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00017.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame18",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00018.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardWalkFrame19",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00019.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame0",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00000.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame1",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00001.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame2",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00002.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame3",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00003.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame4",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00004.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame5",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00005.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame6",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00006.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardJumpFrame7",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/2BlueWizardJump/CharaWizardJump_00007.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame0",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00000.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame1",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00001.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame2",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00002.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame3",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00003.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame4",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00004.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame5",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00005.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame6",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00006.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame7",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00007.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame8",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00008.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame9",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00009.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame10",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00010.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame11",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00011.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame12",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00012.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame13",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00013.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame14",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00014.png"
+      },
+      {
+        "type": "image",
+        "key": "blueWizardDashFrame15",
+        "url": "src/scenes/phaser-editor/assets/characters/BlueWizard/DashEffect/BlueWizardDash_00015.png"
+      }
+    ]
+  },
+  "meta": {
+    "app": "Phaser Editor 2D - Asset Pack Editor",
+    "url": "https://phasereditor2d.com",
+    "contentType": "phasereditor2d.pack.core.AssetContentType",
+    "version": 2
+  }
+}
